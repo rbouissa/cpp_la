@@ -1,15 +1,12 @@
-#include"ClapTrap.hpp"
+#include"ScavTrap.hpp"
 
 
 int main()
 {
-    ClapTrap C("fred");
+    ScavTrap C("fred");
     
         C.attack("Heart");
-         C.takeDamage(3);
+         C.takeDamage(100);
          C.beRepaired(4);
-         if(C.getHitPoints() < 0)
-         {
-            std::cout<<"djdkjkd"<<std::endl;
-         }
+         C.guardGate();
 }

@@ -19,24 +19,26 @@ class Fixed{
     void setRawBits( int const raw ); 
     float toFloat( void ) const;
     int toInt( void ) const;
-    Fixed operator-(const Fixed& o);
-    Fixed operator+(const Fixed& o);
-    Fixed operator*(const Fixed& o);
-    Fixed operator/(const Fixed& o);
-    bool operator>(const Fixed& o);
-    bool operator<(const Fixed& o);
-    bool operator>=(const Fixed& o);
-    bool operator<=(const Fixed& o);
-    bool operator==(const Fixed& o);
-    bool operator!=(const Fixed& o);
+    Fixed operator-(const Fixed& o) const ;
+    Fixed operator+(const Fixed& o) const ;
+    Fixed operator*(const Fixed& o) const;
+    Fixed operator/(const Fixed& o) const ;
+    bool operator>(const Fixed& o) const;
+    bool operator<(const Fixed& o) const;
+    bool operator>=(const Fixed& o) const;
+    bool operator<=(const Fixed& o) const;
+    bool operator==(const Fixed& o) const;
+    bool operator!=(const Fixed& o) const;
     Fixed& operator++();
     Fixed operator++(int);
-     static Fixed& min(Fixed& t,Fixed& k);
-    static Fixed& max( Fixed& t,Fixed& k);
+    static const  Fixed& min( const Fixed & t,const Fixed& k)  ;
+     static const Fixed& max( const Fixed& t,const Fixed& k) ;
+     static Fixed& min(Fixed& t,Fixed& k)  ;
+     static Fixed& max( Fixed& t,Fixed& k)  ;
     ~Fixed();
  
 };
-std::ostream& operator<<(std::ostream& h,const Fixed& o);
+
 std::ostream& operator<<(std::ostream& h,const Fixed& o);
 
 

@@ -1,10 +1,5 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(ScavTrap &t):ClapTrap(t)
-{
-    *this = t;
-}
-
 ScavTrap::ScavTrap(std::string name):ClapTrap(name)
 {
     std::cout<<"Constructor of ScavTrap Called"<<std::endl;
@@ -13,20 +8,41 @@ ScavTrap::ScavTrap(std::string name):ClapTrap(name)
     EnergyPoints=50;
     AttackDamage=20;
 }
-
-void ScavTrap::attack(const std::string& target)
+ScavTrap::ScavTrap(ScavTrap &t):ClapTrap(t)
 {
-    EnergyPoints = EnergyPoints -1;
-    std::cout<<"ScavTrap "<<Name<<"attacks "<<target<<",causing"<<AttackDamage<<std::endl;
+    *this = t;
+}
 
+void ScavTrap :: attack(const std::string& target)
+{
+    if(HitPoints<=0)
+        std::cout<<Name<<" has died"<<std::endl;
+    else if(EnergyPoints<=0)
+        std::cout<<Name<<" has no enough energy"<<std::endl;
+    else{
+  
+    std::cout<<"ScavTrap  "<<Name<<" attacks "<<target<<" ,causing "<<AttackDamage<<std::endl;
+       EnergyPoints = EnergyPoints -1;
+    }
 }
 
 void ScavTrap::guardGate()
 {
     std::cout<<"ScavTrap " <<"is now in Gate keeper mode";
 }
-
-ScavTrap :: ~ScavTrap()
+ScavTrap::~ScavTrap()
 {
-    std::cout<<"Deconstructor Of ScavTrap called"<<std::endl;
+    std::cout<<"ScavTrap Deconstructor Called "<<std::endl;
 }
+
+ScavTrap &ScavTrap :: operator=(const ScavTrap& o)
+ {
+    if(this != &o)
+    {
+         Name=o.Name;
+         HitPoints=o.HitPoints;
+         EnergyPoints=o.EnergyPoints;
+         AttackDamage=o.AttackDamage;
+    }
+    return *this;
+ }

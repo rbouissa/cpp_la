@@ -4,12 +4,23 @@
 int main()
 {
     ClapTrap C("fred");
-    
-        C.attack("Heart");
-         C.takeDamage(3);
-         C.beRepaired(4);
-         if(C.getHitPoints() < 0)
-         {
-            std::cout<<"djdkjkd"<<std::endl;
-         }
+    C.attack("Heart");
+    C.attack("Heart");
+    C.attack("Heart");
+    C.attack("Heart");
+    C.attack("Heart");
+    C.attack("Heart");
+    C.attack("Heart");
+    C.attack("Heart");
+    C.attack("Heart");
+    C.attack("Heart");
+    C.attack("Heart");
+ 
+
+
+
+    C.takeDamage(10);
+    C.beRepaired(4);
+    C.attack("Head");
+    C.beRepaired(10);
 }

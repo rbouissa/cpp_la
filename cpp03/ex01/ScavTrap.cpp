@@ -13,17 +13,38 @@ ScavTrap::ScavTrap(ScavTrap &t):ClapTrap(t)
 {
     *this = t;
 }
-void ScavTrap::attack(const std::string& target)
-{
-    EnergyPoints = EnergyPoints -1;
-    std::cout<<"ScavTrap "<<Name<<"attacks "<<target<<",causing"<<AttackDamage<<std::endl;
 
+void ScavTrap :: attack(const std::string& target)
+{
+    if(HitPoints<=0)
+        std::cout<<Name<<" has died"<<std::endl;
+    else if(EnergyPoints<=0)
+        std::cout<<Name<<" has no enough energy"<<std::endl;
+    else{
+  
+    std::cout<<"ScavTrap  "<<Name<<" attacks "<<target<<" ,causing "<<AttackDamage<<std::endl;
+       EnergyPoints = EnergyPoints -1;
+    }
 }
+
 void ScavTrap::guardGate()
 {
-    std::cout<<"ScavTrap " <<"is now in Gate keeper mode";
+    std::cout<<"ScavTrap " <<"is now in Gate keeper mode" << std::endl;
 }
 ScavTrap::~ScavTrap()
 {
     std::cout<<"ScavTrap Deconstructor Called "<<std::endl;
 }
+
+
+ScavTrap &ScavTrap :: operator=(const ScavTrap& o)
+ {
+    if(this != &o)
+    {
+         Name=o.Name;
+         HitPoints=o.HitPoints;
+         EnergyPoints=o.EnergyPoints;
+         AttackDamage=o.AttackDamage;
+    }
+    return *this;
+ }

@@ -18,12 +18,17 @@ FragTrap::~FragTrap()
     std::cout<<"FragTrap Deconstructor Called"<<std::endl;
 }
 
-void ClapTrap :: attack(const std::string& target)
-{
-     EnergyPoints = EnergyPoints -1;
-    std::cout<<"FragTrap "<<Name<<" attacks "<<target<<" ,causing"<<AttackDamage<<std::endl;
-}
-
+FragTrap &FragTrap :: operator=(const FragTrap& o)
+ {
+    if(this != &o)
+    {
+         Name=o.Name;
+         HitPoints=o.HitPoints;
+         EnergyPoints=o.EnergyPoints;
+         AttackDamage=o.AttackDamage;
+    }
+    return *this;
+ }
 void FragTrap :: highFivesGuys(void)
 {
     std::cout<<" Positive High Fives Request"<<std::endl;

@@ -11,6 +11,7 @@ class ClapTrap{
         unsigned int AttackDamage;
         
    public:
+   ClapTrap();
     ClapTrap(std::string Name);
     ClapTrap(ClapTrap &t);
     ClapTrap& operator=(const ClapTrap& o);
@@ -18,10 +19,8 @@ class ClapTrap{
     void attack(const std::string& target);
     void takeDamage(unsigned int amount);
     void beRepaired(unsigned int amount);
-    int  getHitPoints()
-    {
-        return HitPoints;
-    }
+    int  getHitPoints();
+    
 };
 
 #endif

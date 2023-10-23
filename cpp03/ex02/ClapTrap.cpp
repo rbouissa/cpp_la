@@ -1,19 +1,13 @@
 #include"ClapTrap.hpp"
 
-
-
 ClapTrap::~ClapTrap()
 {
-    std::cout<<"ClapTrap Deconstructor Called"<<std::endl;
+    std::cout<<"Deconstructor Called"<<std::endl;
+}
 
-}
-ClapTrap::ClapTrap(ClapTrap &t)
-{
-    *this = t;
-}
 ClapTrap::ClapTrap(std::string name)
 {
-    std::cout<<"ClapTrap Constructor Called"<<std::endl;
+    std::cout<<"Constructor Called"<<std::endl;
     Name = name;
     HitPoints = 10;
     EnergyPoints = 10;
@@ -22,20 +16,62 @@ ClapTrap::ClapTrap(std::string name)
 
 void ClapTrap :: attack(const std::string& target)
 {
-     EnergyPoints = EnergyPoints -1;
-    std::cout<<"ClapTrap "<<Name<<" attacks "<<target<<" ,causing"<<AttackDamage<<std::endl;
+    if(HitPoints<=0)
+        std::cout<<Name<<" has died"<<std::endl;
+    else if(EnergyPoints<=0)
+        std::cout<<Name<<" has no enough energy"<<std::endl;
+    else{
+  
+    std::cout<<"ClapTrap "<<Name<<" attacks "<<target<<" ,causing "<<AttackDamage<<std::endl;
+       EnergyPoints = EnergyPoints -1;
+    }
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
+    if(HitPoints<=0)
+        std::cout<<Name<<" has died"<<std::endl;
+    else
+    {
     std::cout<<"ClapTrap "<<Name<<" takeDamage : "<<amount<<std::endl;
-   
+    
     HitPoints=HitPoints-amount;
-}
+    if (HitPoints < 0)
+        HitPoints = 0;
+    }
+
+ }
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
-    std::cout<<"ClapTrap "<<Name<<" beRepaired : "<<amount<<std::endl;
-    HitPoints = amount;
-    EnergyPoints = EnergyPoints -1;
+    if(getHitPoints()<=0)
+        std::cout<<Name<<" has died"<<std::endl;
+    else if(EnergyPoints<=0)
+        std::cout<<Name<<" has no enough energy"<<std::endl;
+    else {
+        std::cout<<"ClapTrap "<<Name<<" beRepaired :"<<amount<<std::endl;
+        HitPoints += amount;
+        EnergyPoints = EnergyPoints -1;
+    }
+
 }
+
+ClapTrap::ClapTrap(ClapTrap &t)
+{
+    *this = t;
+}
+ int ClapTrap ::  getHitPoints()
+    {
+        return HitPoints;
+    }
+ClapTrap &ClapTrap :: operator=(const ClapTrap& o)
+ {
+    if(this != &o)
+    {
+         Name=o.Name;
+         HitPoints=o.HitPoints;
+         EnergyPoints=o.EnergyPoints;
+         AttackDamage=o.AttackDamage;
+    }
+    return *this;
+ }

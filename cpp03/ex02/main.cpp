@@ -1,13 +1,8 @@
-#include"ClapTrap.hpp"
+#include"FragTrap.hpp"
 int main()
 {
-    ClapTrap C("fred");
-    
+    FragTrap C("fred");
         C.attack("Heart");
-         C.takeDamage(3);
-         C.beRepaired(4);
-         if(C.getHitPoints() < 0)
-         {
-            std::cout<<"djdkjkd"<<std::endl;
-         }
+         C.takeDamage(105);
+         C.beRepaired(20);
 }

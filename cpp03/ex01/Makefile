@@ -2,7 +2,7 @@ CPPFLAGS	= -Wall -Wextra -Werror -std=c++98 -fsanitize=address
 
 RM		= rm -f
 NAME	= ClapTrap
-SRC		= main.cpp ClapTrap.cpp
+SRC		= main.cpp ClapTrap.cpp ScavTrap.cpp
 		
 
 OBJ	= $(SRC:.cpp=.o)

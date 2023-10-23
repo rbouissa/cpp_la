@@ -1,8 +1,8 @@
 CPPFLAGS	= -Wall -Wextra -Werror -std=c++98 -fsanitize=address
 
 RM		= rm -f
-NAME	= ClapTrap
-SRC		= main.cpp ClapTrap.cpp
+NAME	= FragTrap
+SRC		= main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 		
 
 OBJ	= $(SRC:.cpp=.o)

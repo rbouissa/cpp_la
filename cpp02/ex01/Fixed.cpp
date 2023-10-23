@@ -2,7 +2,7 @@
 
 Fixed::Fixed(){
     std::cout<<"Default constructor called"<<std::endl;
-fixed_point_nb=0;
+    fixed_point_nb=0;
 }
 
 Fixed::Fixed(Fixed &t)
@@ -47,7 +47,6 @@ int Fixed::toInt( void ) const{
 }
 
 int Fixed :: getRawBits( void ) const{
-    //std::cout<<"getRawBits member function called"<<std::endl;
     return fixed_point_nb;
 }
 

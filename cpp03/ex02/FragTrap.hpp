@@ -4,11 +4,11 @@
 
 class FragTrap : public ClapTrap{
     public:
+    FragTrap();
      FragTrap(FragTrap &t);
    FragTrap& operator=(const FragTrap& o);
    FragTrap(std::string name);
    ~FragTrap();
-   void attack(const std::string& target); 
    void highFivesGuys(void);
 };
 

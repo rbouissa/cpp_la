@@ -3,7 +3,7 @@
 
 Fixed::Fixed(){
     std::cout<<"Default constructor called"<<std::endl;
-fixed_point_nb=0;
+    fixed_point_nb=0;
 }
 
 Fixed::Fixed(Fixed &t)
@@ -19,9 +19,7 @@ Fixed &Fixed :: operator=(const Fixed& o)
        std::cout <<"Copy assignment operator called"<<std::endl;
         fixed_point_nb=o.getRawBits();
     }
-    
     return *this;
-
 }
 
 Fixed::~Fixed()

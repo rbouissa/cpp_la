@@ -2,7 +2,7 @@ CPPFLAGS	= -Wall -Wextra -Werror -std=c++98 -fsanitize=address
 
 RM		= rm -f
 NAME	= Animal
-SRC		= main.cpp  dog.cpp cat.cpp animal.cpp
+SRC		= main.cpp  dog.cpp cat.cpp animal.cpp Brain.cpp
 		
 
 OBJ	= $(SRC:.cpp=.o)
