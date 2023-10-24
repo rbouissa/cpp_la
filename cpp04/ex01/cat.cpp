@@ -1,10 +1,11 @@
 #include"cat.hpp"
 #include"Brain.hpp"
 
-Cat::Cat()
+Cat::Cat():Animal()
 {
+   this->type = "cat";
     brain = new Brain();
-    std::cout<<"Cat Constructor Called"<<std::endl;
+    std::cout<< this->type <<" Constructor Called"<<std::endl;
 }
 
 void Cat :: makeSound()  const
@@ -12,7 +13,7 @@ void Cat :: makeSound()  const
     std::cout<<"meow meow meow "<<std::endl;
 }
 
-Cat::Cat(Cat &o)
+Cat::Cat(Cat &o)  : Animal(o)
 {
     *this = o;
 }
@@ -27,6 +28,7 @@ Cat &Cat:: operator=(const Cat& o)
  {
     if(this != &o)
     {
+        *(brain) = *(o.brain);
         type=o.type;
     }
     return *this;

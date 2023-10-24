@@ -1,9 +1,10 @@
 #include"dog.hpp"
 
-Dog::Dog()
+Dog::Dog():Animal()
 {
+    this->type = "dog";
     brain = new Brain();
-    std::cout<<"Dog Constructor Called"<<std::endl;
+    std::cout<< this->type <<" Constructor Called"<<std::endl;
 }
 
 void Dog :: makeSound() const 
@@ -11,7 +12,7 @@ void Dog :: makeSound() const
     std::cout<<"how how how"<<std::endl;
 }
 
-Dog::Dog(Dog &o)
+Dog::Dog(Dog &o):Animal(o)
 {
     *this = o;
 }
@@ -26,6 +27,7 @@ Dog &Dog :: operator=(const Dog& o)
  {
     if(this != &o)
     {
+       *(brain) = *(o.brain);
         type=o.type;
     }
     return *this;

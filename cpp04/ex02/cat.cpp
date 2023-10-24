@@ -1,7 +1,7 @@
 #include"cat.hpp"
 #include"Brain.hpp"
 
-Cat::Cat()
+Cat::Cat():Animal()
 {
     brain = new Brain();
     std::cout<<"Cat Constructor Called"<<std::endl;
@@ -12,7 +12,7 @@ void Cat :: makeSound()  const
     std::cout<<"meow meow meow "<<std::endl;
 }
 
-Cat::Cat(Cat &o)
+Cat::Cat(Cat &o):Animal(o)
 {
     *this = o;
 }
