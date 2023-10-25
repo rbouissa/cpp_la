@@ -5,21 +5,6 @@
 
 int main()
 {
-  //  int e = 0;
-    // Animal k[10];
-
-    // while (e < 5)
-    // {
-    //     k[e] = Dog();
-    //     e++;
-    // }
-
-    // while (e < 10)
-    // {
-    //     k[e] = Cat();
-    //     e++;
-    // }
-
     const Animal* j = new Dog();
     const Animal* i = new Cat();
     j->makeSound();
