@@ -1,7 +1,8 @@
-#include"cat.hpp"
+#include"Cat.hpp"
 Cat::Cat()
 {
-    std::cout<<"Cat Constructor Called"<<std::endl;
+  this->type = "cat";
+std::cout<< this->type <<" Constructor Called"<<std::endl;
 }
 void Cat :: makeSound()  const
 {

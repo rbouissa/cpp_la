@@ -1,9 +1,10 @@
-#include"dog.hpp"
+#include"Dog.hpp"
 
 Dog::Dog():Animal()
 {
+     this->type = "Dog";
     brain = new Brain();
-    std::cout<<"Dog Constructor Called"<<std::endl;
+    std::cout<< this->type <<" Constructor Called"<<std::endl;
 }
 
 void Dog :: makeSound() const 

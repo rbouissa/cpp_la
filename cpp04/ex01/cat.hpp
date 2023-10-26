@@ -1,6 +1,6 @@
 #ifndef CAT_H
 #define CAT_H
-#include "animal.hpp"
+#include "Animal.hpp"
 #include"Brain.hpp"
 class Cat : public Animal{
     private:
@@ -10,7 +10,7 @@ class Cat : public Animal{
    Cat(Cat &o);
    Cat& operator=(const Cat& o);
    ~Cat();
-    void makeSound() const ;
+    void makeSound() const;
 };
 
 #endif

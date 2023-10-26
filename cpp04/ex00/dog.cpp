@@ -1,8 +1,9 @@
-#include"dog.hpp"
+#include"Dog.hpp"
 
 Dog::Dog()
 {
-    std::cout<<"Dog Constructor Called"<<std::endl;
+    this->type = "dog";
+    std::cout<< this->type <<" Constructor Called"<<std::endl;
 }
 
 void Dog :: makeSound() const 

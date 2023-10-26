@@ -1,6 +1,6 @@
 #ifndef BRAIN_H
 #define BRAIN_H
-#include "animal.hpp"
+#include "Animal.hpp"
 
 class Brain {
     private:

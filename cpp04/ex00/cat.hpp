@@ -1,9 +1,10 @@
 #ifndef CAT_H
 #define CAT_H
-#include "animal.hpp"
+#include "Animal.hpp"
 
 class Cat : public Animal{
     public:
+    int i;
     Cat();
    Cat& operator=(const Cat& o);
    ~Cat();

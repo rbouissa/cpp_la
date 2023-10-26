@@ -1,6 +1,6 @@
-#include"animal.hpp"
-#include"cat.hpp"
-#include"dog.hpp"
+#include"Animal.hpp"
+#include"Cat.hpp"
+#include"Dog.hpp"
 Animal::~Animal()
 {
     std::cout<<"Animal Deconstructor Called"<<std::endl;

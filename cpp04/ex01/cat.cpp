@@ -1,4 +1,4 @@
-#include"cat.hpp"
+#include"Cat.hpp"
 #include"Brain.hpp"
 
 Cat::Cat():Animal()

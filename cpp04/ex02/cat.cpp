@@ -1,10 +1,11 @@
-#include"cat.hpp"
+#include"Cat.hpp"
 #include"Brain.hpp"
 
 Cat::Cat():Animal()
 {
+     this->type = "cat";
     brain = new Brain();
-    std::cout<<"Cat Constructor Called"<<std::endl;
+   std::cout<< this->type <<" Constructor Called"<<std::endl;
 }
 
 void Cat :: makeSound()  const
