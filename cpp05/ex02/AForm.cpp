@@ -30,3 +30,10 @@ AForm::AForm(std::string n, const int gs, const int ge, bool sd)
     else if (gradetoexuc > 150 || gradetosing > 150)
         throw Bureaucrat::GradeTooLowException();
 }
+std::ostream&   operator<<( std::ostream& o, const AForm& form ) {
+    o << "----------FORM DETAILS------" << std::endl;
+    o << "NAME-----------> " << form.getName() << std::endl
+      << "SIGN GRADE-----> " << form.getgradetosing() << std::endl
+      << "EXECUTE GRADE--> " << form.gradetoexuct();
+    return o;
+}

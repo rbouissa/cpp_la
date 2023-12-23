@@ -16,6 +16,7 @@ class AForm{
        
         
     public :
+    virtual void execute(Bureaucrat const & executor)const = 0;
         AForm();
         AForm(std::string n, const int gs,const int ge ,bool sd);
         //Bureaucrat(Bureaucrat &o);
@@ -32,7 +33,7 @@ class AForm{
                 return "GradeTooHighException";
             }
         };
-    ~AForm();
+    virtual ~AForm();
     std::string getName() const
     {
         return name;

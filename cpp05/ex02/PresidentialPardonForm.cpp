@@ -1,22 +1,36 @@
-
-#include"Bureaucrat.hpp"
-#include"AForm.hpp"
-#include"Bureaucrat.hpp"
-#include"ShrubberyCreationForm.hpp"
 #include"PresidentialPardonForm.hpp"
-void PresidentialPardonForm :: beSigned(Bureaucrat& br)
+PresidentialPardonForm::PresidentialPardonForm(const std::string& trg):AForm( "PresidentialPardonForm",25,5,false),target(trg)
 {
-    if (br.getGrade() > gradetosing)
-        throw Bureaucrat::GradeTooLowException();
-    signd = true;
+
 }
+
+void PresidentialPardonForm::execute(Bureaucrat const & executor) const
+{
+     if(executor.getGrade()  > 25 && executor.getGrade() > 5)
+     {
+          if ( this->getSignd() == false )
+        throw AForm::GradeTooLowException();
+    if ( executor.getGrade() > this->gradetoexuct() ) {
+        throw AForm::GradeTooLowException();
+        std::cout<<target<<"has been pardoned by Zaphod Beeblebrox"<<std::endl;
+     }
+     else
+        std::cout<<"the presidentiale failed"<<std::endl;
+     }
+}
+
 PresidentialPardonForm::~PresidentialPardonForm()
 {
     std::cout<<"PresidentialPardonForm Deconstructor Called"<<std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(): signd(false), gradetoexuc(0), gradetosing(0), name(NULL)
-{
-    
+PresidentialPardonForm::PresidentialPardonForm(): target(NULL)
+{   
     std::cout<<"PresidentialPardonForm Constructor Called"<<std::endl;
+}
+
+PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& o)
+{
+    (void)o;
+    return *this;
 }

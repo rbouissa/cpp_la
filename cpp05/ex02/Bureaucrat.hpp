@@ -4,7 +4,7 @@
 # include <iostream>
 # include <string>
 #include <stdexcept>
-#include "Form.hpp"
+#include "AForm.hpp"
 
 class AForm;
 class Bureaucrat{
@@ -29,7 +29,8 @@ class Bureaucrat{
             return "GradeTooHighException";
         }
     };
-    std::string getName(){
+    std::string getName() const
+    {
     return name;
    };
    // void SetName(std::string n){
@@ -38,11 +39,12 @@ class Bureaucrat{
    //  void SetGrade(int n){
    //    grade=n;
    // };
-   int getGrade(){
+   int getGrade() const{
       return grade;
    }
    void   signForm(AForm &form);
    ~Bureaucrat();
+   void executeForm(AForm const & form) ;
 };
 std::ostream& operator<<(std::ostream& h,const Bureaucrat& o);
 

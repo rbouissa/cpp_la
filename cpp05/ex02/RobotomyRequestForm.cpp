@@ -3,27 +3,39 @@
 #include"ShrubberyCreationForm.hpp"
 #include"PresidentialPardonForm.hpp"
 #include"RobotomyRequestForm.hpp"
-RobotomyRequestForm::RobotomyRequestForm(std::string n, const int gs, const int ge, bool sd)
-    : signd(72), gradetoexuc(45), gradetosing(ge), name(n)
+RobotomyRequestForm::RobotomyRequestForm(const std::string& trg):AForm( "RobotomyRequestForm",72,45,false),target(trg)
 {
-    if (gradetoexuc < 1 || gradetosing < 1)
-        throw Bureaucrat::GradeTooHighException();
-    else if (gradetoexuc > 150 || gradetosing > 150)
-        throw Bureaucrat::GradeTooLowException();
+
 }
-void RobotomyRequestForm :: beSigned(Bureaucrat& br)
+
+void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
-    if (br.getGrade() > gradetosing)
-        throw Bureaucrat::GradeTooLowException();
-    signd = true;
+     if(executor.getGrade()  > 145 && executor.getGrade() > 137)
+     {
+          if ( this->getSignd() == false )
+        throw AForm::GradeTooLowException();
+    if ( executor.getGrade() > this->gradetoexuct() ) {
+        throw AForm::GradeTooLowException();
+        std::cout<<"grrrrrrrrrrrrrrrrrrr(:;)"<<std::endl;
+        std::cout<<target<<" has been robotomizedsuccessfully 50% of the time"<<std::endl;
+     }
+     else
+        std::cout<<" the robotomy failed"<<std::endl;
+     }
 }
+
 RobotomyRequestForm::~RobotomyRequestForm()
 {
     std::cout<<"RobotomyRequestForm Deconstructor Called"<<std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(): signd(false), gradetoexuc(0), gradetosing(0), name(NULL)
-{
-    
+RobotomyRequestForm::RobotomyRequestForm(): target(NULL)
+{    
     std::cout<<"RobotomyRequestForm Constructor Called"<<std::endl;
 }
+RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& o)
+{
+    (void)o;
+    return *this;
+}
+ 

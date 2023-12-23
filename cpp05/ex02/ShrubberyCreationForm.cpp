@@ -1,29 +1,47 @@
-#include"AForm.hpp"
-#include"Bureaucrat.hpp"
+
 #include"ShrubberyCreationForm.hpp"
-#include"PresidentialPardonForm.hpp"
-ShrubberyCreationForm::ShrubberyCreationForm(std::string n, const int gs, const int ge, bool sd)
-    : signd(145), gradetoexuc(137), gradetosing(ge), name(n)
-{
-    if (gradetoexuc < 1 || gradetosing < 1)
-        throw Bureaucrat::GradeTooHighException();
-    else if (gradetoexuc > 150 || gradetosing > 150)
-        throw Bureaucrat::GradeTooLowException();
+
+#include <fstream>
+#include <iostream>
+#include<cstdlib>
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string& trg) : AForm( "ShrubberyCreationForm",145,137,false) ,  target(trg)
+{      
 }
-
-
-void ShrubberyCreationForm :: beSigned(Bureaucrat& br)
+void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
-    if (br.getGrade() > gradetosing)
-        throw Bureaucrat::GradeTooLowException();
-    signd = true;
+    if(executor.getGrade()  > 145 && executor.getGrade() > 137)
+    {
+     if ( this->getSignd() == false )
+        throw AForm::GradeTooLowException();
+    if ( executor.getGrade() > this->gradetoexuct() ) {
+        throw AForm::GradeTooLowException();
+    }
+      std::string filename = target + "_shrubbery.txt";
+            // Write ASCII trees to the file
+            std::ofstream file(filename.c_str());
+            if (file.is_open()) {
+                file <<  "         /\\\n"
+        "        /__\\\n"
+        "       /    \\\n"
+        "      /      \\\n"
+        "     /        \\\n"
+        "    /          \\\n"
+        "   /____________\\\n"
+        "      |  |  |\n"
+        "      |  |  |";
+                file.close();
+                std::cout << "Shrubbery file '" << filename << "' created successfully.\n";
+            } else {
+                std::cerr << "Error creating shrubbery file.\n";
+            }
+    }
 }
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {
     std::cout<<"RobotomyRequestForm Deconstructor Called"<<std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(): signd(false), gradetoexuc(0), gradetosing(0), name(NULL)
+ShrubberyCreationForm::ShrubberyCreationForm():target(NULL)
 {
     std::cout<<"RobotomyRequestForm Constructor Called"<<std::endl;
 }
