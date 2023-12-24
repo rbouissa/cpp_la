@@ -10,7 +10,7 @@ class Fixed{
    const static int fractional_bits = 8;
    public:
     Fixed();
-    Fixed(const Fixed &t);
+     Fixed(const Fixed &t);
     Fixed& operator=(const Fixed& o);
     Fixed(const int a);
     Fixed(const float a);
