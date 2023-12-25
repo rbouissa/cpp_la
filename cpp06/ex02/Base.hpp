@@ -7,7 +7,7 @@
 #include<stdint.h>
 class Base {
     public :
-    virtual ~Base();
+    virtual ~Base(){};
 };
 
 #endif
