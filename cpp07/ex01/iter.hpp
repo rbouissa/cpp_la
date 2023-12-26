@@ -5,8 +5,8 @@
 # include <string>
 #include<cmath>
 #include<stdint.h>
-template<typename T>
-void Iter(T& a,T& b,T& c)
+template<typename T,size_t Size, typename Func>
+void Iter(T(&a)[Size],Func func)
 {
     
 }
