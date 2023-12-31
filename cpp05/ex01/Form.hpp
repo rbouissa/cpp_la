@@ -18,19 +18,15 @@ class Form{
     public :
         Form();
         Form(std::string n, const int gs,const int ge ,bool sd);
-        //Bureaucrat(Bureaucrat &o);
+        Form(Form &k);
         Form& operator=(const Form& o);
-        class GradeTooLowException : public std::exception {
-        public:
-            const char* what() const throw(){
-                return "GradeTooLowException";
-            }
+         class GradeTooHighException : public std::exception {
+            public:
+                virtual const char* what() const throw() ;
         };
-        class GradeTooHighException : public std::exception {
-        public:
-            const char* what() const throw(){
-                return "GradeTooHighException";
-            }
+        class GradeTooLowException : public std::exception {
+            public:
+                virtual const char* what() const throw();
         };
     ~Form();
     std::string getName() const

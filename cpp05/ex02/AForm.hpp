@@ -19,19 +19,15 @@ class AForm{
     virtual void execute(Bureaucrat const & executor)const = 0;
         AForm();
         AForm(std::string n, const int gs,const int ge ,bool sd);
-        //Bureaucrat(Bureaucrat &o);
+        AForm(AForm &k);
         AForm& operator=(const AForm& o);
-        class GradeTooLowException : public std::exception {
-        public:
-            const char* what() const throw(){
-                return "GradeTooLowException";
-            }
+         class GradeTooHighException : public std::exception {
+            public:
+                virtual const char* what() const throw() ;
         };
-        class GradeTooHighException : public std::exception {
-        public:
-            const char* what() const throw(){
-                return "GradeTooHighException";
-            }
+        class GradeTooLowException : public std::exception {
+            public:
+                virtual const char* what() const throw();
         };
     virtual ~AForm();
     std::string getName() const

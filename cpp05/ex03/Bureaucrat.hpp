@@ -16,23 +16,20 @@ class Bureaucrat{
     Bureaucrat(std::string name,int g);
     //Bureaucrat(Bureaucrat &o);
     Bureaucrat& operator=(const Bureaucrat& o);
-    class GradeTooLowException : public std::exception {
-    public:
-        const char* what() const throw(){
-            return "GradeTooLowException";
-        }
-    };
-
     class GradeTooHighException : public std::exception {
-    public:
-        const char* what() const throw(){
-            return "GradeTooHighException";
-        }
-    };
+            public:
+                virtual const char* what() const throw() ;
+        };
+        class GradeTooLowException : public std::exception {
+            public:
+                virtual const char* what() const throw();
+        };
     std::string getName() const
     {
     return name;
    };
+    void        decrementgrade();
+    void        incrementgrade();
    // void SetName(std::string n){
    //    name=n;
    // };

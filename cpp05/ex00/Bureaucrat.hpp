@@ -11,21 +11,18 @@ class Bureaucrat{
     public :
     Bureaucrat();
     Bureaucrat(std::string name,int g);
-    //Bureaucrat(Bureaucrat &o);
+    Bureaucrat(Bureaucrat &o);
     Bureaucrat& operator=(const Bureaucrat& o);
-    class GradeTooLowException : public std::exception {
-    public:
-        const char* what() const throw(){
-            return "GradeTooLowException";
-        }
-    };
-
     class GradeTooHighException : public std::exception {
-    public:
-        const char* what() const throw(){
-            return "GradeTooHighException";
-        }
-    };
+            public:
+                virtual const char* what() const throw() ;
+        };
+        class GradeTooLowException : public std::exception {
+            public:
+                virtual const char* what() const throw();
+        };
+    void        decrementgrade();
+    void        incrementgrade();
     std::string getName(){
     return name;
    };

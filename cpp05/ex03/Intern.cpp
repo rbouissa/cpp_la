@@ -47,3 +47,8 @@ AForm Intern :: *makeForm(std::string name,std::string target)
     std::cout<<"please enter somthing like <PresidentialPardonForm> or <ShrubberyCreationForm>,RobotomyRequestForm"<<std::endl;
     return (NULL);
 }
+
+Intern& Intern::operator=( const Intern& o) {
+    ( void ) o;
+    return (*this);
+}

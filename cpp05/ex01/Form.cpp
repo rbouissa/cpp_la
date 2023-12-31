@@ -17,10 +17,10 @@ Form::Form(): signd(false), gradetoexuc(0), gradetosing(0), name(NULL)
     std::cout<<"Form Constructor Called"<<std::endl;
 }
 
-// Form::Form(Form &o)
-// {
-//     *this = o;
-// }
+Form::Form(Form &k):gradetoexuc(k.gradetoexuc), gradetosing(k.gradetosing), name(k.name)
+{
+    *this = k;
+}
 
 Form::Form(std::string n, const int gs, const int ge, bool sd)
     : signd(sd), gradetoexuc(gs), gradetosing(ge), name(n)
@@ -29,4 +29,22 @@ Form::Form(std::string n, const int gs, const int ge, bool sd)
         throw Bureaucrat::GradeTooHighException();
     else if (gradetoexuc > 150 || gradetosing > 150)
         throw Bureaucrat::GradeTooLowException();
+}
+
+Form &Form :: operator=(const Form& o)
+{
+    if(this != &o)
+    {
+       std::cout <<"Copy assignment operator called"<<std::endl;
+       signd=o.signd;
+    }
+    return *this;
+}
+const char *	Form::GradeTooHighException::what() const throw() {
+    return "GradeTooHighException";
+}
+
+const char *	Form::GradeTooLowException::what() const throw()
+{
+    return "GradeTooLowException";
 }

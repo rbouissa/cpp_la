@@ -14,9 +14,8 @@ class Intern{
     public :
     Intern();
     ~Intern();
-  
     Intern(Intern &o);
-    //Intern& operator=(const Intern& o);
+   Intern &operator=(Intern const &o);
    AForm *makeForm(std::string name,std::string target);
    };
 std::ostream& operator<<(std::ostream& h,const Intern& o);
