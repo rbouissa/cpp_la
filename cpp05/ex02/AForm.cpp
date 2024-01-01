@@ -30,13 +30,15 @@ AForm::AForm(std::string n, const int gs, const int ge, bool sd)
     else if (gradetoexuc > 150 || gradetosing > 150)
         throw Bureaucrat::GradeTooLowException();
 }
-std::ostream&   operator<<( std::ostream& o, const AForm& form ) {
-    o << "----------FORM DETAILS------" << std::endl;
-    o << "NAME-----------> " << form.getName() << std::endl
-      << "SIGN GRADE-----> " << form.getgradetosing() << std::endl
-      << "EXECUTE GRADE--> " << form.gradetoexuct();
-    return o;
+std::  ostream &operator<<(std::ostream &o, AForm const &h)
+{
+     o << "Our Form Details is" << std::endl;
+    o << "The name of it :  " << h.getName() << std::endl
+      << "Sign grade : " << h.getgradetosing() << std::endl
+      << "Execute grade : " << h.gradetoexuct()<<std::endl;
+    return (o);
 }
+
 const char *	AForm::GradeTooHighException::what() const throw() {
     return "GradeTooHighException";
 }
@@ -44,4 +46,35 @@ const char *	AForm::GradeTooHighException::what() const throw() {
 const char *	AForm::GradeTooLowException::what() const throw()
 {
     return "GradeTooLowException";
+}
+
+AForm &AForm :: operator=(const AForm& o)
+{
+    if(this != &o)
+    {
+       std::cout <<"Copy assignment operator called"<<std::endl;
+       signd=o.signd;
+    }
+    return *this;
+}
+const char *	AForm::NotSignedException::what() const throw() {
+	return ("Form not signed!");
+}
+
+std::string AForm::getName() const
+{
+    return name;
+}
+
+bool AForm::getSignd() const{
+    return signd;
+}
+
+int AForm::getgradetosing() const
+{
+    return gradetosing;
+}
+
+int AForm::gradetoexuct()const{
+    return gradetoexuc;
 }

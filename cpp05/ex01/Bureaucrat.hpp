@@ -26,22 +26,11 @@ class Bureaucrat{
         };
        void        decrementgrade();
     void        incrementgrade();
-    std::string getName(){
-    return name;
-   };
-   // void SetName(std::string n){
-   //    name=n;
-   // };
-   //  void SetGrade(int n){
-   //    grade=n;
-   // };
-   int getGrade(){
-      return grade;
-   }
+    std::string getName()const;
+   int getGrade()const;
    void   signForm(Form &form);
-
    ~Bureaucrat();
 };
-std::ostream& operator<<(std::ostream& h,const Bureaucrat& o);
+std::ostream&   operator<<( std::ostream& o, const Bureaucrat& h );
 
 #endif

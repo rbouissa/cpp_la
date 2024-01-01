@@ -24,3 +24,7 @@ Serializer::Serializer(const Serializer &o)
 {
     *this = o;
 }
+Serializer &Serializer :: operator=(const Serializer& o)
+{
+    return *this;
+}

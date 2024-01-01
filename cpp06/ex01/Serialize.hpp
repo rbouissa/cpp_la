@@ -15,7 +15,7 @@ class Serializer{
     private:
    Serializer();
     Serializer(const Serializer &o);
-    //Serializer& operator=(const Serializer& o);
+    Serializer& operator=(const Serializer& o);
     ~Serializer();
    public:
    static uintptr_t Serialize(Data* ptr);

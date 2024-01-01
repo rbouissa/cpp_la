@@ -29,23 +29,15 @@ class AForm{
             public:
                 virtual const char* what() const throw();
         };
+         class NotSignedException : public std::exception {
+        public:
+            virtual const char* what() const throw() ;
+    };
     virtual ~AForm();
-    std::string getName() const
-    {
-        return name;
-    }
-    bool getSignd() const
-    {
-        return signd;
-    }
-    int getgradetosing() const
-    {
-        return gradetosing;
-    }
-    int gradetoexuct() const
-    {
-        return gradetoexuc;
-    }
+    std::string getName() const;
+    bool getSignd() const;
+    int getgradetosing() const;
+    int gradetoexuct() const;
    void  beSigned(Bureaucrat& br);
 };
 std::ostream& operator<<(std::ostream& h,const AForm& o);

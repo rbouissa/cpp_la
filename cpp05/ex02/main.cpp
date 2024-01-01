@@ -5,20 +5,20 @@
 int main()
 {
    try {
-        Bureaucrat bureaucrat("mm", 26);
-        ShrubberyCreationForm f1("home");
-        RobotomyRequestForm f2("robotic");
-        PresidentialPardonForm f3("hospital");
-        std::cout << "--------------Shrubbery-------------" << std::endl;
+        Bureaucrat bureaucrat("David goggins", 26);
+        ShrubberyCreationForm f1("marathon");
+        RobotomyRequestForm f2("pull up");
+        PresidentialPardonForm f3("Bench press");
+        std::cout << "Shrubbery" << std::endl;
         bureaucrat.signForm(f1);
         bureaucrat.executeForm(f1);
-        std::cout << "---------------Robotomy ------------" << std::endl;
+        std::cout << "RobotomyRequest" << std::endl;
         bureaucrat.signForm(f2);
         bureaucrat.executeForm(f2);
         bureaucrat.executeForm(f2);
         bureaucrat.executeForm(f2);
         bureaucrat.executeForm(f2);
-        std::cout << "------------President---------------" << std::endl;
+        std::cout << "The Strongest Person In This World" << std::endl;
         bureaucrat.signForm(f3);
         bureaucrat.executeForm(f3);
     }

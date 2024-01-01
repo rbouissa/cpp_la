@@ -22,12 +22,13 @@ Form::Form(Form &k):gradetoexuc(k.gradetoexuc), gradetosing(k.gradetosing), name
     *this = k;
 }
 
-Form::Form(std::string n, const int gs, const int ge, bool sd)
-    : signd(sd), gradetoexuc(gs), gradetosing(ge), name(n)
+Form::Form(std::string n, const int gs)
+    :gradetoexuc(0),  gradetosing(gs), name(n)
 {
-    if (gradetoexuc < 1 || gradetosing < 1)
+    std::cout<<gs<<std::endl;
+    if (gradetosing < 1)
         throw Bureaucrat::GradeTooHighException();
-    else if (gradetoexuc > 150 || gradetosing > 150)
+    else if (gradetosing > 150)
         throw Bureaucrat::GradeTooLowException();
 }
 
@@ -47,4 +48,29 @@ const char *	Form::GradeTooHighException::what() const throw() {
 const char *	Form::GradeTooLowException::what() const throw()
 {
     return "GradeTooLowException";
+}
+std::  ostream &operator<<(std::ostream &o, Form const &h)
+{
+     o << "Our Form Details is" << std::endl;
+    o << "The name of it :  " << h.getName() << std::endl
+      << "Sign grade : " << h.getgradetosing() << std::endl
+      << "Execute grade : " << h.gradetoexuct();
+    return (o);
+}
+std::string Form::getName() const
+{
+    return name;
+}
+
+bool Form::getSignd() const{
+    return signd;
+}
+
+int Form::getgradetosing() const
+{
+    return gradetosing;
+}
+
+int Form::gradetoexuct()const{
+    return gradetoexuc;
 }

@@ -9,17 +9,16 @@ ShrubberyCreationForm::ShrubberyCreationForm(const std::string& trg) : AForm( "S
 }
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
-    if(executor.getGrade()  > 145 && executor.getGrade() > 137)
-    {
+    
      if ( this->getSignd() == false )
         throw AForm::GradeTooLowException();
     if ( executor.getGrade() > this->gradetoexuct() ) {
         throw AForm::GradeTooLowException();
     }
       std::string filename = target + "_shrubbery.txt";
-            // Write ASCII trees to the file
             std::ofstream file(filename.c_str());
             if (file.is_open()) {
+
                 file <<  "         /\\\n"
         "        /__\\\n"
         "       /    \\\n"
@@ -34,7 +33,6 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
             } else {
                 std::cerr << "Error creating shrubbery file.\n";
             }
-    }
 }
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {

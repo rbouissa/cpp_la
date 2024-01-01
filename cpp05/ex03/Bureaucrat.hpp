@@ -1,5 +1,5 @@
-#ifndef BUREAUCRAT_HPP
-#define BUREAUCRAT_HPP
+#ifndef BUREAUCRAT_H
+#define BUREAUCRAT_H
 # include <iomanip>
 # include <iostream>
 # include <string>
@@ -16,7 +16,7 @@ class Bureaucrat{
     Bureaucrat(std::string name,int g);
     //Bureaucrat(Bureaucrat &o);
     Bureaucrat& operator=(const Bureaucrat& o);
-    class GradeTooHighException : public std::exception {
+   class GradeTooHighException : public std::exception {
             public:
                 virtual const char* what() const throw() ;
         };
@@ -24,12 +24,12 @@ class Bureaucrat{
             public:
                 virtual const char* what() const throw();
         };
+       void        decrementgrade();
+    void        incrementgrade();
     std::string getName() const
     {
     return name;
    };
-    void        decrementgrade();
-    void        incrementgrade();
    // void SetName(std::string n){
    //    name=n;
    // };

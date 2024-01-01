@@ -17,7 +17,8 @@ class Form{
         
     public :
         Form();
-        Form(std::string n, const int gs,const int ge ,bool sd);
+        //Form( const std::string& n, int sgrade);
+        Form(std::string n, const int gs);
         Form(Form &k);
         Form& operator=(const Form& o);
          class GradeTooHighException : public std::exception {
@@ -29,22 +30,10 @@ class Form{
                 virtual const char* what() const throw();
         };
     ~Form();
-    std::string getName() const
-    {
-        return name;
-    }
-    bool getSignd() const
-    {
-        return signd;
-    }
-    int getgradetosing() const
-    {
-        return gradetosing;
-    }
-    int gradetoexuct() const
-    {
-        return gradetoexuc;
-    }
+    std::string getName() const;
+    bool getSignd() const;
+    int getgradetosing() const;
+    int gradetoexuct() const;
    void  beSigned(Bureaucrat& br);
 };
 std::ostream& operator<<(std::ostream& h,const Form& o);

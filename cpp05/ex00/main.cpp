@@ -1,16 +1,24 @@
 #include"Bureaucrat.hpp"
 
-int main()
+
+int main( void )
 {
-    try{
-        Bureaucrat k("simo",0);
-        std::cout<<"grade is in the good range"<<std::endl;
-    }
-    catch (const Bureaucrat::GradeTooHighException& e) {
-        std::cout<< "Exception caught: " << e.what() << std::endl;
-    }
-    catch (const Bureaucrat::GradeTooLowException& e) {
-       
-        std::cout<< "Exception caught: " << e.what() << std::endl;
+    try 
+    {
+        int count = 0;
+        Bureaucrat bureaucrat("Goggins", 1);
+        std::cout << bureaucrat << std::endl;
+        while(1)
+        {
+            std::cout<<count<<std::endl;
+            bureaucrat.incrementgrade();
+            count++;
+        }
+        // while(1)
+        //     bureaucrat.decrementGrade();
+    } 
+    catch (std::exception &e)
+    {
+        std::cout << e.what() << std::endl;
     }
 }
