@@ -1,6 +1,6 @@
 #include"Form.hpp"
 #include"Bureaucrat.hpp"
-void Form :: beSigned(Bureaucrat& br)
+void Form :: beSigned(Bureaucrat const& br)
 {
     if (br.getGrade() > gradetosing)
         throw Bureaucrat::GradeTooLowException();
@@ -17,7 +17,7 @@ Form::Form(): signd(false), gradetoexuc(0), gradetosing(0), name(NULL)
     std::cout<<"Form Constructor Called"<<std::endl;
 }
 
-Form::Form(Form &k):gradetoexuc(k.gradetoexuc), gradetosing(k.gradetosing), name(k.name)
+Form::Form(Form const &k):gradetoexuc(k.gradetoexuc), gradetosing(k.gradetosing), name(k.name)
 {
     *this = k;
 }
@@ -41,6 +41,7 @@ Form &Form :: operator=(const Form& o)
     }
     return *this;
 }
+
 const char *	Form::GradeTooHighException::what() const throw() {
     return "GradeTooHighException";
 }
@@ -57,6 +58,7 @@ std::  ostream &operator<<(std::ostream &o, Form const &h)
       << "Execute grade : " << h.gradetoexuct();
     return (o);
 }
+
 std::string Form::getName() const
 {
     return name;

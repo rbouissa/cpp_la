@@ -43,6 +43,7 @@ std::  ostream &operator<<(std::ostream &o, Bureaucrat const &h)
 }
 
 void    Bureaucrat::incrementgrade() {
+    
     if ( grade -1 < 1 )
         throw Bureaucrat::GradeTooHighException();
     grade--;

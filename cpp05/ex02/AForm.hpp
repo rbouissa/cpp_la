@@ -19,7 +19,7 @@ class AForm{
     virtual void execute(Bureaucrat const & executor)const = 0;
         AForm();
         AForm(std::string n, const int gs,const int ge ,bool sd);
-        AForm(AForm &k);
+        AForm(AForm const&k);
         AForm& operator=(const AForm& o);
          class GradeTooHighException : public std::exception {
             public:
@@ -38,7 +38,7 @@ class AForm{
     bool getSignd() const;
     int getgradetosing() const;
     int gradetoexuct() const;
-   void  beSigned(Bureaucrat& br);
+   void  beSigned(Bureaucrat const & br);
 };
 std::ostream& operator<<(std::ostream& h,const AForm& o);
 #endif

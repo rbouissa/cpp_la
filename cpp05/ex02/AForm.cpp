@@ -1,6 +1,6 @@
 #include"AForm.hpp"
 #include"Bureaucrat.hpp"
-void AForm :: beSigned(Bureaucrat& br)
+void AForm :: beSigned(Bureaucrat const & br) 
 {
     if (br.getGrade() > gradetosing)
         throw Bureaucrat::GradeTooLowException();
@@ -17,7 +17,7 @@ AForm::AForm(): signd(false), gradetoexuc(0), gradetosing(0), name(NULL)
     std::cout<<"AForm Constructor Called"<<std::endl;
 }
 
-AForm::AForm(AForm &k):gradetoexuc(k.gradetoexuc), gradetosing(k.gradetosing), name(k.name)
+AForm::AForm(AForm const&k):gradetoexuc(k.gradetoexuc), gradetosing(k.gradetosing), name(k.name)
 {
     *this = k;
 }

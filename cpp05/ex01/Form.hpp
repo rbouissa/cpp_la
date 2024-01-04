@@ -19,7 +19,7 @@ class Form{
         Form();
         //Form( const std::string& n, int sgrade);
         Form(std::string n, const int gs);
-        Form(Form &k);
+        Form(Form const &k);
         Form& operator=(const Form& o);
          class GradeTooHighException : public std::exception {
             public:
@@ -34,7 +34,7 @@ class Form{
     bool getSignd() const;
     int getgradetosing() const;
     int gradetoexuct() const;
-   void  beSigned(Bureaucrat& br);
+   void  beSigned(Bureaucrat const& br);
 };
 std::ostream& operator<<(std::ostream& h,const Form& o);
 #endif

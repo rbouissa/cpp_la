@@ -10,10 +10,10 @@ Bureaucrat::Bureaucrat()
     std::cout<<"Bureaucrat Constructor Called"<<std::endl;
 }
 
-// Bureaucrat::Bureaucrat(Bureaucrat &o)
-// {
-//     *this = o;
-// }
+Bureaucrat::Bureaucrat(Bureaucrat const&o):name(o.name)
+{
+    *this = o;
+}
 
 Bureaucrat::Bureaucrat(std::string n,int g)
 {
@@ -31,7 +31,7 @@ std::  ostream &operator<<(std::ostream &o, Bureaucrat const &bureaucrat)
     return (o);
 }
 
-void Bureaucrat :: signForm(AForm& form)
+void Bureaucrat :: signForm(AForm& form) const
 {
 	try {
 		form.beSigned(*this);
@@ -41,7 +41,7 @@ void Bureaucrat :: signForm(AForm& form)
 	}
 }
 
-void Bureaucrat::executeForm(AForm const & form)
+void Bureaucrat::executeForm(AForm const & form) const
 {
 	try{
 		form.execute(*this);
@@ -67,10 +67,21 @@ void    Bureaucrat::decrementgrade() {
 }
 
 const char *	Bureaucrat::GradeTooHighException::what() const throw() {
-    return "GradeTooHighException";
+    return "GradeTooHigh";
 }
 
 const char *	Bureaucrat::GradeTooLowException::what() const throw()
 {
-    return "GradeTooLowException";
+    return "GradeTooLow";
+}
+
+Bureaucrat &Bureaucrat :: operator=(const Bureaucrat& o)
+{
+    if(this != &o)
+    {
+       std::cout <<"Copy assignment operator called"<<std::endl;
+       name=o.name;
+	   grade=o.grade;
+    }
+    return *this;
 }

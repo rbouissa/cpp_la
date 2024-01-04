@@ -9,7 +9,7 @@ Bureaucrat::Bureaucrat()
     std::cout<<"Bureaucrat Constructor Called"<<std::endl;
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat &o)
+Bureaucrat::Bureaucrat(Bureaucrat const &o):name(o.name)
 {
     *this = o;
 }
@@ -25,7 +25,7 @@ Bureaucrat::Bureaucrat(std::string n,int g)
 		throw Bureaucrat::GradeTooLowException();
 }
 
-void Bureaucrat :: signForm(Form& form)
+void Bureaucrat :: signForm(Form & form) const
 {
 	try {
 		form.beSigned(*this);

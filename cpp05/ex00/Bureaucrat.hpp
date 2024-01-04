@@ -21,7 +21,7 @@ class Bureaucrat{
             public:
                 virtual const char* what() const throw();
         };
-    void        decrementgrade();
+    void        decrementgrade() ;
     void        incrementgrade();
     std::string getName()const;
    int getGrade()const ;

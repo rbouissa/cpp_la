@@ -12,8 +12,7 @@ Intern::Intern()
     std::cout<<"Intern Constructor Called"<<std::endl;
 }
 
-
-Intern::Intern(Intern &o)
+Intern::Intern(Intern const&o)
 {
     *this = o;
 }
@@ -23,7 +22,6 @@ AForm Intern :: *makeForm(std::string name,std::string target)
    int i;
    i = 0;
    std::cout<<"Intern creates"<<name<<std::endl;
-  
     while(i<3)
     {
         if(n[i]==name)
@@ -44,7 +42,7 @@ AForm Intern :: *makeForm(std::string name,std::string target)
             }
         i++;
     }
-    std::cout<<"please enter somthing like <PresidentialPardonForm> or <ShrubberyCreationForm>,RobotomyRequestForm"<<std::endl;
+    std::cout<<"please enter somthing like <PresidentialPardonForm> or <ShrubberyCreationForm>,<RobotomyRequestForm>"<<std::endl;
     return (NULL);
 }
 

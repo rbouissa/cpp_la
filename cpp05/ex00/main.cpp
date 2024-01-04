@@ -10,12 +10,10 @@ int main( void )
         std::cout << bureaucrat << std::endl;
         while(1)
         {
-            std::cout<<count<<std::endl;
-            bureaucrat.incrementgrade();
+            std::cout<<bureaucrat.getGrade()<<std::endl;
+            bureaucrat.decrementgrade();
             count++;
         }
-        // while(1)
-        //     bureaucrat.decrementGrade();
     } 
     catch (std::exception &e)
     {
