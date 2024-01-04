@@ -16,15 +16,19 @@ Intern::Intern(Intern const&o)
 {
     *this = o;
 }
-AForm Intern :: *makeForm(std::string name,std::string target)
+
+AForm* Intern :: makeForm(std::string name,std::string target)
 {
-   std::string n[]={"PresidentialPardonForm, ShrubberyCreationForm,RobotomyRequestForm"};
+   std::string n[]={"PresidentialPardonForm", "ShrubberyCreationForm", "RobotomyRequestForm"};
    int i;
    i = 0;
    std::cout<<"Intern creates"<<name<<std::endl;
     while(i<3)
     {
+        
         if(n[i]==name)
+        {
+            std::cout<<"Dfdfdfdfddfd";
             switch ((i))
             {
             case 0:
@@ -32,7 +36,6 @@ AForm Intern :: *makeForm(std::string name,std::string target)
                 break;
             case 1:
                 new ShrubberyCreationForm(target);
-                
                 break;
             case 2:
               new RobotomyRequestForm(target);
@@ -40,7 +43,8 @@ AForm Intern :: *makeForm(std::string name,std::string target)
             default:
                 break;
             }
-        i++;
+        }
+             i++;
     }
     std::cout<<"please enter somthing like <PresidentialPardonForm> or <ShrubberyCreationForm>,<RobotomyRequestForm>"<<std::endl;
     return (NULL);
@@ -50,3 +54,4 @@ Intern& Intern::operator=( const Intern& o) {
     ( void ) o;
     return (*this);
 }
+
