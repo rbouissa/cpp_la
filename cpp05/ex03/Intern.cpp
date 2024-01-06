@@ -28,17 +28,16 @@ AForm* Intern :: makeForm(std::string name,std::string target)
         
         if(n[i]==name)
         {
-            std::cout<<"Dfdfdfdfddfd";
             switch ((i))
             {
             case 0:
-               new PresidentialPardonForm(target);
+               return new PresidentialPardonForm(target);
                 break;
             case 1:
-                new ShrubberyCreationForm(target);
+                return new ShrubberyCreationForm(target);
                 break;
             case 2:
-              new RobotomyRequestForm(target);
+              return new  RobotomyRequestForm(target);
                 break;
             default:
                 break;

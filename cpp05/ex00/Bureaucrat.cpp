@@ -23,7 +23,6 @@ Bureaucrat::Bureaucrat(std::string n,int g):name(n)
 		throw Bureaucrat::GradeTooLowException();
 	if(g)
 	grade = g;
-	
 }
 
 Bureaucrat &Bureaucrat :: operator=(const Bureaucrat& o)
@@ -36,6 +35,7 @@ Bureaucrat &Bureaucrat :: operator=(const Bureaucrat& o)
     }
     return *this;
 }
+
 std::  ostream &operator<<(std::ostream &o, Bureaucrat const &h)
 {
     o << h.getName() << ", bureaucrat grade " << h.getGrade() << std::endl;
