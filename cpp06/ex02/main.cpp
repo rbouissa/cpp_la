@@ -51,7 +51,7 @@ void identify(Base& p)
 
 int main()
 {
-      srand(time(NULL));
+    srand(time(NULL));
     Base *base = generate();
     identify(base);
     identify(*base);

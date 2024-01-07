@@ -26,5 +26,7 @@ Serializer::Serializer(const Serializer &o)
 }
 Serializer &Serializer :: operator=(const Serializer& o)
 {
+   if(this != &o)
+       std::cout <<"Copy assignment operator called"<<std::endl;
     return *this;
 }

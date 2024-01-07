@@ -18,6 +18,7 @@ Span::Span(const Span &o)
 {
     *this = o;
 }
+
 Span &Span :: operator=(const Span& o)
 {
     if(this != &o)
