@@ -2,54 +2,56 @@
 #define ARRAY_HPP
 
 #include<iostream>
-
+#include <cstdlib>
 template <typename T>
 
 class Array{
     private:
         T *t;
-        unsigned int len;
+        unsigned int length;
     public:
+
+     class InvalidIndex: public std::exception {
+        public:
+            virtual const char* what() const throw() {return("cannot access to this index!");}
+    };
         Array(){
             t = new T();
-            len = 0;
+            length = 0;
         };
         Array(unsigned int n){
             t = new T[n];
-            len = n;
+            length = n;
         };
-        Array(const Array& obj){
-            t = new T[len];
-            len = obj.len;
-        for (unsigned int i=0; i < len; i++)
-            t[i] = obj.t[i];
+        Array(const Array& o){
+            t = new T[length];
+            length = o.length;
+        for (unsigned int i=0; i < length; i++)
+            t[i] = o.t[i];
         };
-        Array& operator=(const Array& obj){
-            if (this != &obj){
+        Array& operator=(const Array& o){
+            if (this != &o){
                 delete []t;
-                t = new T[len];
-                len = obj.len;
-                for (unsigned int i = 0; i < len; i++)
-                    t[i] = obj.t[i];
+                t = new T[length];
+                length = o.length;
+                for (unsigned int i = 0; i < length; i++)
+                    t[i] = o.t[i];
             }
             return(*this);
         }
         T& operator[](unsigned int i) const{
-        if (i >= len)
-            throw failed();
+        if (i >= length)
+            throw InvalidIndex();
         return t[i];
     }
     unsigned int size()const{ 
-        return(len);
+        return(length);
         }
 
     ~Array(){ 
         delete []t;
     }
-    class failed: public std::exception {
-        public:
-            virtual const char* what() const throw() {return("failed to access to this index!");}
-    };
+   
 
 };
 

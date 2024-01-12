@@ -3,6 +3,21 @@
 #include<vector>
 #include<algorithm>
 #include <fstream>
+int check_value(std::string val)
+{
+    double value=std::atof(val.c_str());
+    std::cout<<value<<std::endl;
+    if(val[0]!=' ')
+        return 0;
+    while((val[0]!=' ' && !isdigit(val[i])&&  val[i]!='.'))
+        i++;
+     while((val[0]!=' ' && !isdigit(val[i])&&  val[i]!='.'))
+    else if(value>1000||value<0)
+    {
+    return 0;
+    }
+    return 1;
+}
 int main()
 {
      std::ifstream inputFile("txt.file");
@@ -10,80 +25,39 @@ int main()
         std::cerr << "Error opening file: " <<  std::endl;
         return 1; 
     }
-    //read_line by line
     std::string line;
     std::string file;
     int i=0; 
     std::getline(inputFile,line);
     if(line != "date | value")
     {
+        
         std::cout << "Error: invalid file format" << std::endl;
         exit(1);
     }
-
-    while (std::getline(inputFile, line)) {
-        // try{
-            std::string tmp;
+    while (std::getline(inputFile, line)) {        
+std::size_t found = line.find("|");
+            std::string value;
+            std::string date;
             i=0;
-            if(line[10]!= " " || line[10] != " "||line[11]!="|"||line[4]!="-"||line[7]!="-")
+            if(line[10] != ' '&&line[11] != '|'&&line[4]!='-'&&line[7]!='-')
                     std::cout<<"invalid map"<<std::endl;
-            while(line[i]!="|")
+         if (found!=std::string::npos)
             {
-                tmp[i]=line[i];
-                i++;
+                date.insert (0,line,0,found);
+                value.insert(0,line,found+1,line.length()-1);
+                // std::cout<<date<<std::endl;
+                // std::cout<<value<<std::endl;
             }
-
-        // }
-        // catch(std::exception &e)
-        // {
-
-        // }
-        //file =file+line+"\n";
+            if(!check_value(value))
+                 std::cout<<"invalid map"<<std::endl;
+            //check_date(value);
     }
-
-    // if(getline(file)!="date | value")
-    // {
-    //     exit(1);
-
-    // }
-    int i=0;
-    std::string ln;
-    while(file[i])
-    {
-        ln =Null;
-        while(file[i]!="\n")
-        {
-            ln =file[i];
-        }
-        l
-    }
-    std::cout<<file<<std::endl;
-    // i=0;
-    // while(file[i])
-    // {
-    //     std::cout<<file[i];
-    //     i++;
-    // }
 }
-int check_int(std::string s)
-{
-    
-    while(s[i])
-    {
-        if(s[i]<="0"&&s[i]>="9")
-        i++;
-    else
-        return 0;
-    }
-    return 1
-}
-int check_date(std::string s)
-{
-    int i=0;
-    std::string tmp;
-   while(s[i])
-   {
-    
 
-   }
-}
+
+
+// int check_date(std::string date)
+// {
+
+// }
