@@ -1,8 +1,7 @@
 CPPFLAGS	= -Wall -Wextra -Werror -std=c++98 
 RM		= rm -f
-NAME	= Iter
-SRC		= main.cpp 
-
+NAME	=Span
+SRC		= main.cpp  btc
 all: $(NAME)
 
 $(NAME): $(OBJ)

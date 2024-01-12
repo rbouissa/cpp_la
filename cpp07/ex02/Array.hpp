@@ -1,44 +1,56 @@
-#ifndef ARRAY_H
-#define ARRAY_H
-# include <iomanip>
-# include <iostream>
-# include <string>
-#include<cmath>
-#include<stdint.h>
-template<typename T,size_t Size, typename Func>
+#ifndef ARRAY_HPP
+#define ARRAY_HPP
+
+#include<iostream>
+
+template <typename T>
 
 class Array{
     private:
-         T *t;
-        unsigned int l;
+        T *t;
+        unsigned int len;
     public:
-    Array();
-    Array(unsigned int n){
-          t = new T[n];
-            l = n;
-    }
-    Array(const Array& o)
-    {
-          t = new T[l];
-            l = o.l;
-        for (unsigned int i=0; i < l; i++)
-            t[i] = o.t[i];
-    }
-    Array& operator=(const Array& o){
-          if (this != &o){
+        Array(){
+            t = new T();
+            len = 0;
+        };
+        Array(unsigned int n){
+            t = new T[n];
+            len = n;
+        };
+        Array(const Array& obj){
+            t = new T[len];
+            len = obj.len;
+        for (unsigned int i=0; i < len; i++)
+            t[i] = obj.t[i];
+        };
+        Array& operator=(const Array& obj){
+            if (this != &obj){
                 delete []t;
-                t = new T[l];
-                l = o.l;
-                for (unsigned int i = 0; i < l; i++)
-                    t[i] = o.t[i];
+                t = new T[len];
+                len = obj.len;
+                for (unsigned int i = 0; i < len; i++)
+                    t[i] = obj.t[i];
+            }
+            return(*this);
+        }
+        T& operator[](unsigned int i) const{
+        if (i >= len)
+            throw failed();
+        return t[i];
     }
-       ~Array(){ 
+    unsigned int size()const{ 
+        return(len);
+        }
+
+    ~Array(){ 
         delete []t;
     }
-       unsigned int size()const{ 
-        return(l);
-        }
-}
+    class failed: public std::exception {
+        public:
+            virtual const char* what() const throw() {return("failed to access to this index!");}
+    };
+
 };
 
 #endif
