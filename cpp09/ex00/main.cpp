@@ -7,17 +7,34 @@ int check_value(std::string val)
 {
     double value=std::atof(val.c_str());
     std::cout<<value<<std::endl;
+    int i=0;
+    int point=0;
+    int space=0;
     if(val[0]!=' ')
         return 0;
-    while((val[0]!=' ' && !isdigit(val[i])&&  val[i]!='.'))
-        i++;
-     while((val[0]!=' ' && !isdigit(val[i])&&  val[i]!='.'))
-    else if(value>1000||value<0)
+    while(val[i]|| isdigit(val[i])||val[i]=='.')
     {
-    return 0;
+        if(val[i]=='.')
+            point++;
+        else if(val[i]==' ')
+            space++;
+        i++;
     }
+     if((val[0]!=' ' && !isdigit(val[i])&&  val[i]!='.'))
+        return 0;
+    else if(value>1000 || value<0) 
+    return 0;
+else if(space>1||point>1)
+return 0;
+    else
     return 1;
 }
+
+// int check_date(std::string date)
+// {
+
+// }
+
 int main()
 {
      std::ifstream inputFile("txt.file");
@@ -30,8 +47,7 @@ int main()
     int i=0; 
     std::getline(inputFile,line);
     if(line != "date | value")
-    {
-        
+    { 
         std::cout << "Error: invalid file format" << std::endl;
         exit(1);
     }
