@@ -3,6 +3,7 @@
 #include<vector>
 #include<algorithm>
 #include <fstream>
+#include <time.h>
 int check_value(std::string val)
 {
     double value=std::atof(val.c_str());
@@ -30,10 +31,31 @@ return 0;
     return 1;
 }
 
-// int check_date(std::string date)
-// {
+int check_date(std::string date)
+{
+    struct tm tms;
+    if(!strptime(date.c_str(),"%Y-%m-%d",&tms))
+        return 0;
+    int dayy = tms.tm_mday;
+    int yearr=tms.tm_year;
+    int monthh = tms.tm_mon;
+   if (dayy > 31)
+       // throw(std::runtime_error("Error: bad input => " + key));
+    return 0;
+    if ((yearr % 4 == 0 && yearr % 100 != 0) || (yearr % 400 == 0))
+    {
+        if (monthh == 2 && dayy > 29)
+        return 0;
+            // throw(std::runtime_error("Error: bad input => " + key));
+        if (monthh % 2 == 0 && dayy > 30)
+        return 0;
+            // throw(std::runtime_error("Error: bad input => " + key));
+    }
+    else if ((monthh == 2 && dayy > 28) || (monthh % 2 == 0 && dayy > 30))
+        return 0;
+    return 1;
 
-// }
+}
 
 int main()
 {
@@ -62,12 +84,11 @@ std::size_t found = line.find("|");
             {
                 date.insert (0,line,0,found);
                 value.insert(0,line,found+1,line.length()-1);
-                // std::cout<<date<<std::endl;
-                // std::cout<<value<<std::endl;
             }
             if(!check_value(value))
                  std::cout<<"invalid map"<<std::endl;
-            //check_date(value);
+            if(!check_date(date))
+                std::cout<<"invalid map"<<std::endl;
     }
 }
 
