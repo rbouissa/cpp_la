@@ -56,8 +56,9 @@ void BitcoinExchange::check_date(std::string date)
     if(!strptime(date.c_str(),"%Y-%m-%d",&tms))
          throw(InvalidDate());
     int day = tms.tm_mday;
-    int year=tms.tm_year;
+    int year=tms.tm_year+1900;
     int month = tms.tm_mon;
+    std::cout<<"------->"<<year<<std::endl;
    if (day > 31)
        throw(InvalidDate());
     if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
