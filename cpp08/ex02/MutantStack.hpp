@@ -32,7 +32,6 @@ class MutantStack : public std::stack<T, container>
         {
             return this->c.end();
         }
-		
         ~MutantStack(){}
 };
 #endif

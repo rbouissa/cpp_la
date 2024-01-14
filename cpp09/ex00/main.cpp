@@ -59,19 +59,24 @@
 
 // }
 #include"BitcoinExchange.hpp"
-int main()
+int main(int ac ,char **av)
 {
+      if(ac != 2)
+    {
+        std::cout<<"Error: Couldn't open file."<<std::endl;
+        return(0);
+    }
     try{
         
     BitcoinExchange b;
-    std::ifstream inputFile("txt.file");
+    std::ifstream inputFile(av[1]);
     if (!inputFile.is_open()) {
         std::cerr << "Error opening file: " <<  std::endl;
         return 1; 
     }
     std::string line;
     std::string file;
-    int i=0; 
+    //int i=0; 
     std::getline(inputFile,line);
     if(line != "date | value")
     { 
@@ -83,7 +88,7 @@ int main()
         std::size_t found = line.find("|");
         std::string value;
         std::string date;
-        i=0;
+       // i=0;
         if(line[10] != ' '&&line[11] != '|'&&line[4]!='-'&&line[7]!='-')
         {
             std::cout<<"invalid map"<<std::endl;
@@ -94,8 +99,10 @@ int main()
                 date.insert (0,line,0,found);
                 value.insert(0,line,found+1,line.length()-1);
             }
-        b.check_value(value);
+            b.fill_data_map();
         b.check_date(date);
+        b.check_value(value,date);
+        
         }
     }
     catch (std::exception &e)
