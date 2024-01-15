@@ -4,13 +4,11 @@
 #include<iostream>
 #include <cstdlib>
 template <typename T>
-
 class Array{
     private:
         T *t;
         unsigned int length;
     public:
-
      class InvalidIndex: public std::exception {
         public:
             virtual const char* what() const throw() {return("cannot access to this index!");}
@@ -24,16 +22,16 @@ class Array{
             length = n;
         };
         Array(const Array& o){
-            t = new T[length];
             length = o.length;
+            t = new T[o.length];
         for (unsigned int i=0; i < length; i++)
             t[i] = o.t[i];
         };
         Array& operator=(const Array& o){
             if (this != &o){
                 delete []t;
-                t = new T[length];
                 length = o.length;
+                t = new T[length];
                 for (unsigned int i = 0; i < length; i++)
                     t[i] = o.t[i];
             }
@@ -47,7 +45,6 @@ class Array{
     unsigned int size()const{ 
         return(length);
         }
-
     ~Array(){ 
         delete []t;
     }
