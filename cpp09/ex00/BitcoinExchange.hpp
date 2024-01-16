@@ -7,6 +7,7 @@
 #include <fstream>
 #include <time.h>
 #include <stack>
+#include <map>
 class BitcoinExchange{
 private:
         std::map<std::string,float> map;
