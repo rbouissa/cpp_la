@@ -1,7 +1,7 @@
 CPPFLAGS	= -Wall -Wextra -Werror -std=c++98 
 RM		= rm -f
-NAME	=RPN
-SRC		= main.cpp  RPN.cpp 
+NAME	=PmergeMe
+SRC		= main.cpp  PmergeMe.cpp 
 all: $(NAME)
 
 $(NAME): $(OBJ)

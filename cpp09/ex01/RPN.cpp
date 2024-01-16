@@ -60,36 +60,47 @@ int check_line_without_space(char av)
     else
         return 0;
 }
+
 int check_after_char(std::string av)
 {
     int i;
     i=0;
     while(av[i])
     {
+        
     if(av[i]==' ')
-    {
         break ;
-    }
     if(check_line_without_space(av[i]))
         i++;
-    if(av[i]&&av[i]==' ')
+    if(av[i]==' ')
         i++;
+    if(!av[i+1]&&check_line_without_space(av[i]))
+    i++;
+   // std::cout<<av[i]<<std::endl;
     // else 
     //     break;
     }
     if(av[i])
+    {
+       
         return 0;
+    }
     else
+    {
+        
      return 1;
+    }
 
 }
+
 void RPN::process_expression(std::string str)
 {
     int i=0;
     if(!check_line(str))
         throw(InvalidNumber());
     if(!check_after_char(str))
-        throw(InvalidNumber());
+   
+          throw(InvalidNumber()); 
     else
     {
         while(str[i])
@@ -97,26 +108,20 @@ void RPN::process_expression(std::string str)
         if(str[i] == ' ')
             i++;
         if(str[i]>='0'&&str[i]<='9')
-        { std::cout<<"---------->"<<std::endl;
             myStack.push(str[i]-48);
-        }
         else if(str[i]=='/'||str[i]=='*'||str[i]=='+'||str[i]=='-')
         {
             if(myStack.size()<2)
                  throw(InvalidNumber());
             else
-            {  
-                
+            {   
                 int a = myStack.top();
                 myStack.pop();
                 int b = myStack.top();
                 myStack.pop();
                 int result;
                 if(str[i]=='*')
-                {
-                    
                     result=mult(a,b);
-                }
                 else if(str[i]=='/')
                     result=div(a,b);
                 else if(str[i]=='-')
@@ -127,14 +132,20 @@ void RPN::process_expression(std::string str)
             }
         }
         else  
+        {
+             std::cout<<"dsdsdsd"<<std::endl;
             throw(InvalidNumber());
+        }
         if(str[i])
         i++;
         }
 
     if(myStack.size()!=1)
                 throw(InvalidNumber());
+     else
+        std::cout<<myStack.top()<<std::endl;
     }
+   
 }
 
 const char *	RPN::InvalidNumber::what() const throw()
