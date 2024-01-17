@@ -1,7 +1,7 @@
 CPPFLAGS	= -Wall -Wextra -Werror -std=c++98 
 RM		= rm -f
 NAME	=Span
-SRC		= main.cpp  s
+SRC		= main.cpp  span.cpp
 all: $(NAME)
 
 $(NAME): $(OBJ)

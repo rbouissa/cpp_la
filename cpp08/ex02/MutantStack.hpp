@@ -17,8 +17,10 @@ class MutantStack : public std::stack<T, container>
         MutantStack(const MutantStack &other) {
             *this = other;
         }
-		MutantStack& operator=(const MutantStack& other) {
-			if (this != &other) {
+		MutantStack& operator=(const MutantStack& other) 
+        {
+			if (this != &other)
+            {
 				this->c = other.c;
 			}
 			return *this;

@@ -14,12 +14,12 @@ int main()
 	mstack.push(0);
 	MutantStack<int, std::list<int> >::iterator it = mstack.begin();
 	MutantStack<int, std::list<int> >::iterator ite = mstack.end();
-	++it;
-	--it;
+	// ++it;
+	// --it;
 	while (it != ite)
 	{
-	std::cout << *it << std::endl;
-	++it;
+		std::cout << *it << std::endl;
+		++it;
 	}
 	std::stack<int, std::list<int> > s(mstack);
 	return 0;

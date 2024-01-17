@@ -15,7 +15,7 @@ template<typename T>
 void easyfind(T &p, int g)
 {
     if(std::find(p.begin(),p.end(),g)!= p.end())
-        std::cout<<"valeuris found inside the template"<<std::endl;
+        std::cout<<"Valeur Is Found In The Template"<<std::endl;
     else
         throw ValeurNotFound();
 }

@@ -10,10 +10,6 @@ Span::Span()
     std::cout<<"Span Constructor Called"<<std::endl;
 }
 
-Span::Span( unsigned int n)
-{
-	N=n;
-}
 
 Span::Span(const Span &o)
 {
@@ -24,7 +20,7 @@ Span &Span :: operator=(const Span& o)
     if(this != &o)
     {
        std::cout <<"Copy assignment operator called"<<std::endl;
-       N=o.N;
+      
 	   
     }
     return *this;
