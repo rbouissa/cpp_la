@@ -13,13 +13,15 @@ struct Mystruct{
 };
 class Pmerge{
 private:
-         std::vector<int> myVector;
-          std::vector<Mystruct> VectorStr;
+        std::vector<int> myVector;
+        std::vector<int> sort;
+        std::vector<int> tmpVector;
         public:
     Pmerge();
     Pmerge(const Pmerge &o);
     Pmerge& operator=(const Pmerge& o);
     ~Pmerge();
+    void use_recursion(size_t index);
     void ParsPmerge(char** av);
     void fill_stack(char** av);
     void process_expression(std::string str);
