@@ -48,12 +48,12 @@ void BitcoinExchange :: check_value(std::string val,std::string date)
         throw(InvalidNumber());
      std::map<std::string, float>::iterator it;
         it = map.lower_bound(date);
-        std::cout << "---------\t" << it->second << std::endl;
+       // std::cout << "---------\t" << it->second << std::endl;
         if(it->first==date)
             std::cout<<date<<" => "<<value<<" = "<<value * it->second<<std::endl;
         if(map.begin()!=it)
             it--;
-        std::cout<<date<<" => "<<value<<" = "<<value * it->second<<std::endl;
+       // std::cout<<date<<" => "<<value<<" = "<<value * it->second<<std::endl;
 }
 int ft_size(std::string date)
 {
@@ -62,6 +62,7 @@ int ft_size(std::string date)
         i++;
     return i;
 }
+
 void BitcoinExchange::check_date(std::string date)
 {
     struct tm tms;
@@ -69,6 +70,12 @@ void BitcoinExchange::check_date(std::string date)
     std::string dayy;
     if(ft_size(date)!=11)
     throw(InvalidDate());
+    while(date[i])
+    {
+        if(isalpha(date[i]))
+            throw(InvalidDate());
+        i++;
+    }
     while(date[i])
         i++;
     i--;
@@ -118,7 +125,7 @@ void BitcoinExchange:: fill_data_map()
         size_t pip = line.find(",");
         date = line.substr(0,pip);
         value = line.substr(pip+1);
-        std::cout << "+===========\t" << value << std::endl;
+        //std::cout << "+===========\t" << value << std::endl;
         map[date] = std::atof(value.c_str());
     }
     file.close();
