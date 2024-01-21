@@ -61,13 +61,11 @@
 #include"BitcoinExchange.hpp"
 int main(int ac ,char **av)
 {
-      if(ac != 2)
+    if(ac != 2)
     {
         std::cout<<"Error: Couldn't open file."<<std::endl;
         return(0);
     }
-    try{
-        
     BitcoinExchange b;
     std::ifstream inputFile(av[1]);
     if (!inputFile.is_open()) {
@@ -105,11 +103,6 @@ int main(int ac ,char **av)
         
         }
     }
-    catch (std::exception &e)
-    {
-        std::cout << e.what() << std::endl;
-    }
-}
 
 
 
