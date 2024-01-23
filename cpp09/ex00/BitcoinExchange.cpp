@@ -69,7 +69,6 @@ void BitcoinExchange::check_date(std::string date)
     struct tm tms;
     int i=0;
     std::string dayy;
-    // try{
     if(ft_size(date)!=11)
     throw(InvalidDate());
     while(date[i])
@@ -99,7 +98,7 @@ void BitcoinExchange::check_date(std::string date)
     {
         if((month==8||month==10||month==12)&&day>31)
         {
-        std::cout<<"the day----> ::"<<day<<std::endl;
+        //std::cout<<"the day----> ::"<<day<<std::endl;
             throw(InvalidDate()); 
         }
         else if((month==9||month==11)&&day>30)
