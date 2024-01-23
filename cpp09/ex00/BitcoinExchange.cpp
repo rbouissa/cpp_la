@@ -22,6 +22,7 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &o)
     }
     return *this;
 }
+
 void BitcoinExchange :: check_value(std::string val,std::string date)
 {
     double value=std::atof(val.c_str());
@@ -43,7 +44,12 @@ void BitcoinExchange :: check_value(std::string val,std::string date)
     else  if((val[0]!=' ' && !isdigit(val[i])))
         throw(InvalidNumber());
     else if(value>1000 || value<0)  
+    {
+        if(value<0)
+            throw Negative();
+        else
         throw(InvalidNumber());
+    }
     else if(space>1||point>1)
         throw(InvalidNumber());
     std::map<std::string, float>::iterator it;
@@ -158,4 +164,9 @@ const char *	BitcoinExchange::InvalidDate::what() const throw()
 const char *	BitcoinExchange::InvalidNumber::what() const throw()
 {
     return "Error: Invalid Number";
+}
+
+const char *	BitcoinExchange::Negative::what() const throw()
+{
+    return "Error: not a positive number.";
 }

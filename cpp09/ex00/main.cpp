@@ -90,10 +90,10 @@ int main(int ac ,char **av)
         std::string date;
        // i=0;
        try{
+
         if(line[10] != ' '&&line[11] != '|'&&line[4]!='-'&&line[7]!='-')
-        {
-            throw std::invalid_argument("invalid====");
-        }
+            throw std::invalid_argument("Error: bad input =>");
+    
        }
        catch(std::exception &e)
        {
