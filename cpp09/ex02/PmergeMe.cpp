@@ -148,41 +148,40 @@ void Pmerge::merge(std::vector<std::pair<int, int> >& vec, int l, int m, int r)
     int n1 = m - l + 1;
     int n2 = r - m;
 
-    std::vector<std::pair<int, int> > L(n1), R(n2);
+    std::vector<std::pair<int, int> > Left(n1), Right(n2);
 
     for (i = 0; i < n1; i++)
-        L[i] = vec[l + i];
+        Left[i] = vec[l + i];
     for (j = 0; j < n2; j++)
-        R[j] = vec[m + 1 + j];
+        Right[j] = vec[m + 1 + j];
 
     i = 0;
     j = 0;
     k = l;
     while (i < n1 && j < n2)
     {
-        if (L[i].first <= R[j].first)
+        if (Left[i].first <= Right[j].first)
         {
-            vec[k] = L[i];
+            vec[k] = Left[i];
             i++;
         }
         else
         {
-            vec[k] = R[j];
+            vec[k] = Right[j];
             j++;
         }
         k++;
     }
-
     while (i < n1)
     {
-        vec[k] = L[i];
+        vec[k] = Left[i];
         i++;
         k++;
     }
 
     while (j < n2)
     {
-        vec[k] = R[j];
+        vec[k] = Right[j];
         j++;
         k++;
     }
@@ -192,26 +191,6 @@ const char *	Pmerge::InvalidIndex::what() const throw()
 {
     return "Error: Invalid Index";
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
