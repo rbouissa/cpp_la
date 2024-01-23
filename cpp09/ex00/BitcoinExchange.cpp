@@ -28,7 +28,6 @@ void BitcoinExchange :: check_value(std::string val,std::string date)
     int i=0;
     int point=0;
     int space=0;
-    try{
     if(val[0]!=' '||!isdigit(val[1]))
        throw(InvalidNumber());
     while(val[i]|| isdigit(val[i])||val[i]=='.')
@@ -56,11 +55,7 @@ void BitcoinExchange :: check_value(std::string val,std::string date)
             it--;
         std::cout<<date<<" => "<<value<<" = "<<value * it->second<<std::endl;
     }
-      catch (std::exception &e)
-      {
-        std::cout << e.what() << std::endl;
-      }
-}
+    
 int ft_size(std::string date)
 {
     int i=0;
@@ -98,33 +93,33 @@ void BitcoinExchange::check_date(std::string date)
     int day = atoi(dayy.c_str());
     int year = tms.tm_year+1900;
     int month = tms.tm_mon+1;
-    try{
     if (day > 31)
        throw(InvalidDate());
     if(month>=8&&month<=12)
     {
-        if(!((month==8||month==10||month==12)&&day<=31))
+        if((month==8||month==10||month==12)&&day>31)
+        {
+        std::cout<<"the day----> ::"<<day<<std::endl;
             throw(InvalidDate()); 
-        else if(!((month==9||month==11)&&day<=30))
+        }
+        else if((month==9||month==11)&&day>30)
+        {
         throw(InvalidDate()); 
+        }
     }
     else if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
     {
         if (month == 2 && day > 29)
-      throw(InvalidDate());
+            throw(InvalidDate());
         if (month % 2 == 0 && day > 30)
-         throw(InvalidDate());
+             throw(InvalidDate());
     }
   
     else if ((month == 2 && day > 28) || (month % 2 == 0 && day > 30))
          throw(InvalidDate());
     }
-    // catch (std::exception &e)
-    // {
-    //     std::cout << e.what() << std::endl;
-    // }
-}
-}
+
+
 
 
 

@@ -112,14 +112,18 @@ void Pmerge::fill_second_stack()
         std::cout << std::endl;
     }
      std::vector<int>::iterator tmp_it;
+     std::vector<int>::iterator it_new;
     for (std::vector<std::vector<std::pair<int, int> > >::const_iterator it2 = bigOne.begin(); it2 != bigOne.end(); ++it2) {
         for (std::vector<std::pair<int, int> >::const_iterator innerIt = it2->begin(); innerIt != it2->end(); ++innerIt) {
+        //   for (std::vector<int>::iterator it_new = myVector.begin(); it_new != myVector.end(); ++it_new) 
+        //   {
          tmp_it=std::lower_bound(myVector.begin(),myVector.end(),innerIt->second);
          if(innerIt->second!=-1)
             myVector.insert(tmp_it,innerIt->second);
+          }
         }
        std::cout << std::endl;
-    }
+
     std::vector<int>::iterator itt;
     std::cout<<"After:";
      for (std::vector<int>::iterator itt = myVector.begin(); itt != myVector.end(); ++itt) {

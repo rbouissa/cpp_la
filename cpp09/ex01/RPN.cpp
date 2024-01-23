@@ -66,31 +66,22 @@ int check_after_char(std::string av)
     int i;
     i=0;
     while(av[i])
-    {
-        
-    if(av[i]==' ')
-        break ;
-    if(check_line_without_space(av[i]))
-        i++;
-    if(av[i]==' ')
-        i++;
-    if(!av[i+1]&&check_line_without_space(av[i]))
-    i++;
-   // std::cout<<av[i]<<std::endl;
-    // else 
-    //     break;
+    {       
+        if(av[i]==' ')
+            break ;
+        if(check_line_without_space(av[i]))
+            i++;
+        if(av[i]==' ')
+            i++;
+        else
+            break;
+        if(!av[i+1]&&check_line_without_space(av[i]))
+            i++;
     }
     if(av[i])
-    {
-       
         return 0;
-    }
-    else
-    {
-        
-     return 1;
-    }
-
+    else    
+        return 1;
 }
 
 void RPN::process_expression(std::string str)
@@ -132,10 +123,7 @@ void RPN::process_expression(std::string str)
             }
         }
         else  
-        {
-             std::cout<<"dsdsdsd"<<std::endl;
             throw(InvalidNumber());
-        }
         if(str[i])
         i++;
         }

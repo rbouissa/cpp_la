@@ -2,7 +2,7 @@ CXX = c++
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
 RM		= rm -f
 NAME	= RPN
-SRC		= main.cpp BitcoinRPNExchange.cpp\
+SRC		= main.cpp RPN.cpp\
 
 OBJ	= $(SRC:.cpp=.o)
 
